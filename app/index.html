@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast — Poster Cover Studio</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">NC</span>
+    <div>
+      <h1>NEON COAST</h1>
+      <p>Poster Cover Studio — turn any photo into GTA-style cover art</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="btn-undo" type="button" disabled>Undo</button>
+    <button id="btn-redo" type="button" disabled>Redo</button>
+  </div>
+</header>
+<main class="layout">
+  <aside class="controls">
+    <section>
+      <h2>1 · Preset</h2>
+      <div id="preset-list" class="pick-row"></div>
+    </section>
+    <section>
+      <h2>2 · Layout</h2>
+      <div id="layout-list" class="pick-row"></div>
+    </section>
+    <section>
+      <h2>3 · Grade</h2>
+      <div id="grade-list" class="pick-row"></div>
+      <p class="hint">Poster Ink prints the cover like a magazine. Ink Strong is the heavy poster treatment.</p>
+    </section>
+    <section>
+      <h2>Story text</h2>
+      <label>Title <input id="title-input" maxlength="24"></label>
+      <label>Tagline <input id="tagline-input" maxlength="60"></label>
+      <label>Press quote <input id="quote-input" maxlength="60"></label>
+      <label>Quote source <input id="quote-source-input" maxlength="40"></label>
+      <label>Credit line <input id="credit-input" maxlength="90"></label>
+      <label>Volume <input id="volume-input" maxlength="12"></label>
+      <label>Ribbon <input id="ribbon-input" maxlength="30"></label>
+      <label>Stars <input id="stars-input" type="range" min="1" max="5" step="1" value="5"> <span id="stars-value">★★★★★</span></label>
+      <label class="check"><input id="toggle-tags" type="checkbox" checked> Location tags (place + time + hook per panel)</label>
+      <label class="check"><input id="toggle-quote" type="checkbox" checked> Press quote</label>
+      <label class="check"><input id="toggle-furniture" type="checkbox" checked> Poster furniture (WANTED, barcode, seal)</label>
+    </section>
+    <section>
+      <h2>Selected panel</h2>
+      <p id="panel-label">Panel 5 of 9</p>
+      <label>Place <input id="panel-place" maxlength="24"></label>
+      <label>Time <input id="panel-time" maxlength="12"></label>
+      <label>Hook <input id="panel-hook" maxlength="40"></label>
+      <label>Zoom <input id="panel-zoom" type="range" min="1" max="2.2" step="0.05" value="1"></label>
+      <label>Pan X <input id="panel-x" type="range" min="-1" max="1" step="0.05" value="0"></label>
+      <label>Pan Y <input id="panel-y" type="range" min="-1" max="1" step="0.05" value="0"></label>
+      <p class="hint">Click a panel in the poster to select it, then pick a photo below.</p>
+    </section>
+  </aside>
+  <section class="stage-wrap">
+    <div class="stage-bar"><span id="size-label">1080 × 1080</span><span id="export-status">Pick a size to export a PNG.</span></div>
+    <canvas id="stage" width="1080" height="1080"></canvas>
+    <div class="export-row">
+      <button id="btn-export-1080" type="button">Export 1080 × 1080</button>
+      <button id="btn-export-1350" type="button">Export 1080 × 1350</button>
+      <button id="btn-export-1920" type="button">Export 1920 × 1080</button>
+    </div>
+    <h2>Photos — click to fill the selected panel</h2>
+    <div id="photo-strip" class="strip"></div>
+    <button id="btn-upload" type="button">Upload your own photo</button>
+    <input id="upload-input" type="file" accept="image/*" hidden>
+    <p class="fine">All photos are original, made with an image model for this studio. No Rockstar Games logo, artwork or font is used. Fonts: Anton + Pacifico (SIL Open Font License). Everything runs offline — your photos never leave your machine.</p>
+  </section>
+</main>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
